@@ -1,4 +1,3 @@
-const record = require('../models/record.model.js');
 const repo = require('../repository/record.repository');
 const checkparam = require('../validations/record.validation');
 // Yeni record Oluştur
@@ -17,10 +16,11 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
 };
 exports.search = (req, res, next) => {
-    const { startDate, endDate, minCount, maxCount } = req.body;
+    console.log("req.body", req.body);
+   
     const { errors, isValid } = checkparam(req.body);
 
-    if(!isValid)
+    if(isValid)
     {
         return res.status(400).send({
             "errors": errors,
@@ -30,7 +30,12 @@ exports.search = (req, res, next) => {
         });
     }
 
-    repo.search({startDate : startDate, endDate:endDate, minCount:minCount, maxCount:maxCount}, function(err, data){
+  //  const { startDate, endDate, minCount, maxCount } = req.body;
+
+  repo.aggregate(req.body, test);
+  function test(){}
+
+   /* repo.aggregate(req.body, function(err, data){
         if(err)
         {
             return res.status(400).send({
@@ -48,4 +53,5 @@ exports.search = (req, res, next) => {
         })
 
     });
+    */
 };

@@ -1,8 +1,8 @@
-var mongoose = requre('moongose');
+const mongoose = require('mongoose');
 var records = require('../models/record.model');
 
-records.statics = {
-
+module.exports = function() {
+return{
     create: function (data, cb) {
         var record = new this(data);
         record.save(cb);
@@ -61,5 +61,4 @@ records.statics = {
 
 }
 
-var recordModel = mongoose.model('record', records);
-module.exports = recordModel;
+}

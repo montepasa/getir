@@ -49,7 +49,7 @@ module.exports = function checkRecordParam(data) {
     }
 
 
-    if (isNotNull(Date.startDate) && isNotNull(Date.endDate)) {
+    if (helper.isNotNull(Date.startDate) && helper.isNotNull(Date.endDate)) {
         if (!validator.isBefore(data.startDate, data.endDate)) {
             errors.minCount = 'endDate must be after than start date';
         }
@@ -57,6 +57,6 @@ module.exports = function checkRecordParam(data) {
 
     return {
         errors,
-        isvalid : !isNotNull(errors)
+        isvalid : !helper.isNotNull(errors)
     }
 }

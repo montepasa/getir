@@ -4,7 +4,9 @@
   "description": "Getir Project Services",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.9.1",
+    "validator": "^12.2.0"
   },
   "devDependencies": {},
   "scripts": {

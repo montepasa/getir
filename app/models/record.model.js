@@ -10,5 +10,5 @@ const recordScheme = mongoose.Schema({
     timestamps : true
 });
 
-module.exports = mongoose.model("Records", recordScheme);
+module.exports = mongoose.model("Record", recordScheme);
 
