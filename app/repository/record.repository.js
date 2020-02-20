@@ -1,26 +1,12 @@
 const mongoose = require('mongoose');
 var records = require('../models/record.model');
 
-module.exports = function() {
-return{
-    create: function (data, cb) {
-        var record = new this(data);
-        record.save(cb);
-    },
 
-    get: function (query, cb) {
-        this.find(query, cb);
-    },
 
-    update: function (query, updateData, cb) {
-        this.findOneAndUpdate(query, { $set: updateData }, { new: true }, cb);
-    },
-
-    delete: function (query, cb) {
-        this.findOneAndDelete(query, cb);
-    },
-
-    aggregate: function (data, cb) {
+  exports.find = (data, callback) =>
+    {
+        var res = records.find();
+        console.log("resultlar",res);
         records.aggregate([
             {
                 $addFields: {
@@ -47,18 +33,7 @@ return{
                     totalCount: 0
                 }
             }
-        ]).exec((err, data) => {
-
-            if (err) {
-                return cb(err);
-            }
-            else{
-               return cb(null, data);
-            }
-           
+        ]).then(function(result){
+            console.log("datalar", result);
         });
     }
-
-}
-
-}
