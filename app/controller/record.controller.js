@@ -19,6 +19,9 @@ exports.search = (req, res, next) => {
   //  const { startDate, endDate, minCount, maxCount } = req.body;
 
   repository.find(req.body, function(data){
+
+      console.log("ikinci adim");
+      console.log("data", data);
     return res.status(200).send({
         code: 0,
         msg: 'Success',

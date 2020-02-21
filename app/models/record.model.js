@@ -1,14 +1,11 @@
 const mongoose = require('mongoose');
 
-const recordScheme = mongoose.Schema({
-    startDate: String,
+const recordScheme = new mongoose.Schema({
     key: String,
     value: String,
-    counts : [Number]
-}, 
-{
-    timestamps : true
+    createdAt: Date,
+    counts: Array
 });
 
-module.exports = mongoose.model("Record", recordScheme);
+module.exports = mongoose.model("records", recordScheme);
 
