@@ -15,42 +15,11 @@ exports.search = (req, res, next) => {
             "records": []
         });
     }
-
-  //  const { startDate, endDate, minCount, maxCount } = req.body;
-
   repository.find(req.body, function(data){
-
-      console.log("ikinci adim");
-      console.log("data", data);
     return res.status(200).send({
         code: 0,
         msg: 'Success',
         records: data
     });
   });
- 
-
-   /* repo.aggregate(req.body, function(err, data){
-        if(err)
-        {
-            return res.status(400).send({
-                "errors": errors,
-                "code": 101,
-                "msg": 'An error has occurred',
-                "records": []
-            });
-          return res.status(200).send({
-            code: 0,
-            msg: 'Success',
-            records: data
-        }) }
-
-        return res.status(200).send({
-            code: 0,
-            msg: 'Success',
-            records: data
-        })
-
-    });
-    */
 };
